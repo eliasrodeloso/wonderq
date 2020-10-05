@@ -1,0 +1,11 @@
+{
+  "name": "wonderq",
+  "version": "1.0.0",
+  "description": "WonderQ test",
+  "private": true,
+  "author": {
+    "name": "Elias Rodelo",
+    "email": "eliasrodeloso@gmail.com",
+    "url": "https://eliasrodeloso.dev"
+  }
+}
