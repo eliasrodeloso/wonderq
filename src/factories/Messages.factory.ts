@@ -36,49 +36,52 @@ export default class Messages {
     this.messages.set(message.id, message)
   }
 
+  private unlockMessages(userId: string) {
+    this.messages.forEach((message) => {
+      message.unlock(userId)
+    })
+  }
+
   /**
    * Get all messages
    */
-  getMessages(): Array<IMessage> {
+  getMessages(userId?: string): Array<IMessage> | null {
+    if (!userId) {
+      return null
+    }
+
+    this.unlockMessages(userId)
     const arrayMessages = []
+
     for (const message of this.messages.values()) {
-      if (!message.locked) {
+      if (!message.lastAccessBy) {
         arrayMessages.push(message.get())
+        message.lock(userId)
       }
     }
     return arrayMessages
   }
 
-  /**
-   * Lock a message on the map
-   *
-   * @param {String} messageId to be locked
-   */
-  setMessageLocked(messageId: string): IMessage | null {
-    if (!this.messages.has(messageId)) {
-      throw new Error("Message not founf")
-    }
-    const tempMessage =
-      this.messages.get(messageId) || new Message({ message: "dummy" })
-    tempMessage?.lock()
-    this.messages.set(messageId, tempMessage)
-    return tempMessage.get()
-  }
+  // /**
+  //  * Lock a message on the map
+  //  *
+  //  * @param {String} messageId to be locked
+  //  */
+  // setMessageLocked(messageId: string): IMessage | null {
+  //   if (!this.messages.has(messageId)) {
+  //     throw new Error("Message not found")
+  //   }
 
-  /**
-   * Unlock a message on the map
-   *
-   * @param {String} messageId to be unlocked
-   */
-  setMessageUnlocked(messageId: string) {
-    if (!this.messages.has(messageId)) {
-      throw new Error("Message not found")
-    }
-    const tempMessage =
-      this.messages.get(messageId) || new Message({ message: "dummy" })
-    tempMessage?.unlock()
-    this.messages.set(messageId, tempMessage)
-  }
+  //   // this logic is needed because this method can return an undefined
+  //   // if the item is not on the map
+  //   // but since I already check if the record is on the map
+  //   // I can be certain the new Message part is never going to happen
+  //   const tempMessage =
+  //     this.messages.get(messageId) || new Message({ message: "dummy" })
+  //   tempMessage?.lock()
+  //   this.messages.set(messageId, tempMessage)
+  //   return tempMessage.get()
+  // }
 
   /**
    * Delete a message on the map
@@ -87,7 +90,7 @@ export default class Messages {
    */
   deleteMessage(messageId: string): boolean {
     if (!this.messages.has(messageId)) {
-      throw new Error("Message not founf")
+      throw new Error("Message not found")
     }
     return this.messages.delete(messageId)
   }
