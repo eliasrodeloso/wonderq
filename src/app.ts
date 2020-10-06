@@ -2,7 +2,6 @@ import express from "express"
 import cors from "cors"
 import { json } from "body-parser"
 
-import config from "./config/environment.config"
 import messagesRouter from "./resources/messages/message.router"
 import usersMiddleware from "./middlewares/users.middleware"
 
@@ -16,8 +15,4 @@ app.use(usersMiddleware())
 
 app.use("/api/v1/messages", messagesRouter)
 
-app.listen(config.port, () => {
-  console.log(
-    `app listening to https://localhost:${config.port}${config.apiUri}`
-  )
-})
+export default app
