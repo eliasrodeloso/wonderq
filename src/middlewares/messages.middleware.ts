@@ -1,7 +1,8 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Response } from "express"
+import { IUsersRequest } from "./users.middleware"
 import Messages from "../factories/Messages.factory"
 
-export interface IRequest extends Request {
+export interface IRequest extends IUsersRequest {
   messages?: Messages
 }
 
