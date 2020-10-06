@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "a07dde26-eb67-4aa4-b62d-78a090185c9a",
+		"name": "WonderQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all messages",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Content-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/messages",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"messages"
+					]
+				},
+				"description": "Returns all messages that are not locked to view, is discriminatory by user, meaning that if the user sent with the User-Content-Id header is already created on the Backend, then it will return the all messages that the user can see"
+			},
+			"response": [
+				{
+					"name": "Get all messages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Content-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/messages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"9a-C/m6yKEByfys25nl7YivPd37Ons\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Oct 2020 15:51:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": \"4ff8c7cc-9c5f-5413-97e2-96d90fdb6cbe\",\n            \"message\": \"New message c\"\n        },\n        {\n            \"id\": \"7cba8dfe-4a2c-595f-aee0-b0f1eadc5018\",\n            \"message\": \"New message d\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Content-Id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"message\": \"New message e\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/messages",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"messages"
+					]
+				},
+				"description": "Create a message to be stored on the Backend\n\n#### Expecting\n\nA JSON with the following structure\n\n```\n{\n    \"message\": \"dummy message\"\n}\n```"
+			},
+			"response": [
+				{
+					"name": "Create a message",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "User-Content-Id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\": \"New message e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/messages",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "80"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"50-TNRTkn43vAmn4jShPwlwf7WRSIQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Oct 2020 22:02:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": \"687fcde4-beeb-5770-a0dc-abee483f875d\",\n        \"message\": \"New message e\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Process a message",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/messages/:messageId/process",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"messages",
+						":messageId",
+						"process"
+					],
+					"variable": [
+						{
+							"key": "messageId",
+							"value": "4ff8c7cc-9c5f-5413-97e2-96d90fdb6cbe"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Process a message",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/messages/:messageId/process",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"messages",
+								":messageId",
+								"process"
+							],
+							"variable": [
+								{
+									"key": "messageId",
+									"value": "4ff8c7cc-9c5f-5413-97e2-96d90fdb6cbe"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Oct 2020 15:51:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -2,7 +2,7 @@ import { DateTime, Duration } from "luxon"
 import baseConfig from "../config/environment.config"
 import { v5 as uuid, validate as validateUuid } from "uuid"
 
-const TIME_TO_UNLOCK_MESSAGE = 5
+const TIME_TO_UNLOCK_MESSAGE = 5 // in minutes
 
 export interface IMessage {
   id?: string
