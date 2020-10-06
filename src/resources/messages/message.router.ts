@@ -11,6 +11,8 @@ messagesRouter
   .get(controllers.getMessages)
   .post(controllers.createMessage)
 
-messagesRouter.route("/:messageId/process").put(controllers.processMessage)
+messagesRouter.route("/:messageId").get(controllers.getMessage)
+
+messagesRouter.route("/:messageId/process").delete(controllers.processMessage)
 
 export default messagesRouter

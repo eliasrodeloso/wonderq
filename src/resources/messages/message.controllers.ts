@@ -41,8 +41,20 @@ function processMessage(req: IRequest, res: Response) {
   }
 }
 
+function getMessage(req: IRequest, res: Response) {
+  try {
+    const message = req.messages?.getMessage(req.params.messageId)
+    if (message) {
+      res.status(200).json({ data: message })
+    }
+  } catch (error) {
+    res.status(404).json({ error: error.message })
+  }
+}
+
 export default {
   getMessages,
   createMessage,
   processMessage,
+  getMessage,
 }

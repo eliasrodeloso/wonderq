@@ -8,21 +8,18 @@ export interface IMessage {
   id?: string
   message: string
   lastAccess?: string
-  processed?: boolean
 }
 
 export default class Message {
   id: string = ""
   message: string = ""
   lastAccess: string = ""
-  processed: boolean = false
   lastAccessBy: string | null = null
 
-  constructor({ message, id, lastAccess, processed }: IMessage) {
+  constructor({ message, id, lastAccess }: IMessage) {
     this.id = id || uuid(message, baseConfig.uuidNamespace)
     this.message = message
     this.lastAccess = lastAccess || new Date().toISOString()
-    this.processed = processed || false
   }
 
   static isValidId(messageId: string) {
@@ -43,10 +40,6 @@ export default class Message {
     if (nowDate > unlockAfter || userId === this.lastAccessBy) {
       this.lastAccessBy = null
     }
-  }
-
-  setProcessed(value: boolean) {
-    this.processed = value
   }
 
   get() {

@@ -62,27 +62,6 @@ export default class Messages {
     return arrayMessages
   }
 
-  // /**
-  //  * Lock a message on the map
-  //  *
-  //  * @param {String} messageId to be locked
-  //  */
-  // setMessageLocked(messageId: string): IMessage | null {
-  //   if (!this.messages.has(messageId)) {
-  //     throw new Error("Message not found")
-  //   }
-
-  //   // this logic is needed because this method can return an undefined
-  //   // if the item is not on the map
-  //   // but since I already check if the record is on the map
-  //   // I can be certain the new Message part is never going to happen
-  //   const tempMessage =
-  //     this.messages.get(messageId) || new Message({ message: "dummy" })
-  //   tempMessage?.lock()
-  //   this.messages.set(messageId, tempMessage)
-  //   return tempMessage.get()
-  // }
-
   /**
    * Delete a message on the map
    *
