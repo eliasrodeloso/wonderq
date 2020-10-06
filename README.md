@@ -8,6 +8,15 @@ Some recommendations:
 - To test properly is imperative that you use the `User-Content-Id` header on the Get all messages endpoint, can take any value
 - There is a constant called `TIME_TO_UNLOCK_MESSAGE` on the `src/factories/Message.factory.ts` file to set the time where a message can be unlocked so other users can see it
 
+### Usage
+
+- `yarn` to install dependencies
+- `yarn start` to start the server
+- `yarn build` to transpile the code with Babel
+- `yarn test` to do unit testing
+- `yarn lint` to lint the code
+- `yarn debug` to run node in debug mode
+
 ## Discussion
 
 #### What steps would you need to take in order to scale this system to make it production ready for very high volume?
